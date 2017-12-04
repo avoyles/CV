@@ -3,7 +3,6 @@
 \usepackage[version=3]{mhchem} 
 \usepackage{csquotes}
 \usepackage[super]{nth}
-\usepackage[hidelinks]{hyperref}
 
 
 
@@ -66,7 +65,7 @@ Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\
 
 %{\em Department of Statistics} 
 \begin{list1}
-\item[] Ph.D. Candidate, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
+\item[] Ph.D.-track Student, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
 \item[] Nuclear Regulatory Commission Graduate Fellowship 
 \begin{list2}
 \vspace*{.05in}
@@ -75,11 +74,10 @@ Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\
 \item 3.725/4.0 Cumulative GPA
 %\item Research Emphasis:  \enquote{Evaluation of Solid Debris Collection Diagnostics in the Search 
 %for Evidence of Nuclear-Plasma Interactions} 
-% \item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
-\item Dissertation Topic: Nuclear Excitation Functions for Production of Novel Medical Radionuclides.
+\item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
 %\item Dissertation Topic:  \enquote{Hierarchical Models for Multiple Ratings
 %  in Performance-Based\\ \hspace*{1.23in} Student Assessments.} 
-\item Research Advisor:  Lee A. Bernstein
+% \item Advisor:  Lee A. Bernstein
 \end{list2}
 \end{list1}
 
@@ -295,11 +293,13 @@ Mentored students through semester in developing their projects, as well as cour
 \end{list1}
 
 
+A.S. Voyles a,∗ , M.S. Basunia b , J.C. Batchelder a , J.D. Bauer c , T.A. Becker d , L.A. Bernstein a,b ,
+E.F. Matthews a , P.R. Renne d,e , D. Rutte d,e , M.A. Unzueta a , K.A. van Bibber a
 
-
-\section{\sc Publications}
-A.S. Voyles, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber. \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B 410 (2017) 230 - 239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
-
+% \section{\sc Publications}
+% Paciorek, C.J., J.S. Risbey, V. Ventura, and R.D.Rosen. 2002. Multiple indices of Northern Hemisphere Cyclone
+% Activity, Winters 1949-1999. Journal of Climate 15:1573-1590.
+% 
 % Paciorek, C.J., R. Condit, S.P. Hubbell, and R.B. Foster.  2000.
 % The demographics of resprouting in tree and shrub species of a moist
 % tropical forest.  Journal of Ecology 88:765-777.
