@@ -1,8 +1,11 @@
-\documentclass[margin,line]{res}
+\documentclass[margin,centered]{res}
+% \documentclass[margin,line]{res}
 
 \usepackage[version=3]{mhchem} 
 \usepackage{csquotes}
 \usepackage[super]{nth}
+\usepackage[hidelinks]{hyperref}
+\usepackage[shortlabels]{enumitem}
 
 
 
@@ -35,7 +38,24 @@
       \setlength{\leftmargin}{0.2in}}}{\end{list}}
 
 
-
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{resume,label=[\arabic*],leftmargin={\bibhang\widthof{\ \ \ }}}
+\setlist*[bibsection,bibenum]{%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
 
 
 
@@ -43,7 +63,36 @@
 
 \name{Andrew S. Voyles, EIT \vspace*{.1in}}
 
+\address{text1\\
+	 text2\\
+	 text3\\
+	 text5}
+
+% \vskip 2pt
+%   \fullline
+%   \vskip 2pt
+
+% \address{text2}
+
+% \begin{format}
+% 		\title{l}\employer{r}\\
+% 		\dates{r}\\
+% 		\body\\
+% 		\location{l}\\
+% 		\end{format}
+
+% \employer{text3}
+% \title{text4}
+% \dates{text5}
+% \location{text6}
+
 \begin{resume}
+% \hrule
+% \hrulefill
+% \fullline
+% \noindent\rule{\resumewidth}{1pt}
+% \leavevmode\hbox to \textwidth{\hfil\@tablebox{\namefont\@name}\hfil}\par
+
 \section{\sc Contact Information}
 \begin{tabular}{@{}p{2.5in}p{3in}}
 1106B Etcheverry Hall            & {\it Voice:}  (850) 281-0217 \\            
@@ -65,7 +114,7 @@ Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\
 
 %{\em Department of Statistics} 
 \begin{list1}
-\item[] Ph.D.-track Student, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
+\item[] Ph.D. Candidate, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
 \item[] Nuclear Regulatory Commission Graduate Fellowship 
 \begin{list2}
 \vspace*{.05in}
@@ -74,10 +123,11 @@ Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\
 \item 3.725/4.0 Cumulative GPA
 %\item Research Emphasis:  \enquote{Evaluation of Solid Debris Collection Diagnostics in the Search 
 %for Evidence of Nuclear-Plasma Interactions} 
-\item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
+% \item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
+\item Dissertation Topic: Nuclear Excitation Functions for Production of Novel Medical Radionuclides.
 %\item Dissertation Topic:  \enquote{Hierarchical Models for Multiple Ratings
 %  in Performance-Based\\ \hspace*{1.23in} Student Assessments.} 
-% \item Advisor:  Lee A. Bernstein
+\item Research Advisor:  Lee A. Bernstein
 \end{list2}
 \end{list1}
 
@@ -293,13 +343,12 @@ Mentored students through semester in developing their projects, as well as cour
 \end{list1}
 
 
-A.S. Voyles a,∗ , M.S. Basunia b , J.C. Batchelder a , J.D. Bauer c , T.A. Becker d , L.A. Bernstein a,b ,
-E.F. Matthews a , P.R. Renne d,e , D. Rutte d,e , M.A. Unzueta a , K.A. van Bibber a
 
-% \section{\sc Publications}
-% Paciorek, C.J., J.S. Risbey, V. Ventura, and R.D.Rosen. 2002. Multiple indices of Northern Hemisphere Cyclone
-% Activity, Winters 1949-1999. Journal of Climate 15:1573-1590.
-% 
+
+\section{\sc Selected Publications}
+% A.S. Voyles, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber. \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B 410 (2017) 230 - 239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
+\input{publications}
+
 % Paciorek, C.J., R. Condit, S.P. Hubbell, and R.B. Foster.  2000.
 % The demographics of resprouting in tree and shrub species of a moist
 % tropical forest.  Journal of Ecology 88:765-777.

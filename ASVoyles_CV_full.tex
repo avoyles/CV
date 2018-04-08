@@ -1,0 +1,247 @@
+\documentclass[margin,centered]{res}
+% \documentclass[margin,line]{res}
+
+\usepackage[version=3]{mhchem} 
+\usepackage{csquotes}
+\usepackage[super]{nth}
+\usepackage[hidelinks]{hyperref}
+\usepackage[shortlabels]{enumitem}
+
+
+
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+\setlength\parskip{1.5ex}
+
+\topmargin=-0.5in
+\oddsidemargin -.5in
+\evensidemargin -.5in
+\textwidth=6.0in
+\itemsep=0in
+\parsep=0in
+% if using pdflatex:
+%\setlength{\pdfpagewidth}{\paperwidth}
+%\setlength{\pdfpageheight}{\paperheight} 
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+      
+\newenvironment{rSection}[1]{ % 1 input argument - section name
+  \sectionskip
+  \MakeUppercase{\bf #1} % Section title
+  \sectionlineskip
+  \hrule % Horizontal line
+  \begin{list}{}{ % List for each individual item in the section
+    \setlength{\leftmargin}{1.5em} % Margin within the section
+  }
+  \item[]
+}{
+  \end{list}
+}      
+
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{resume,label=[\arabic*],leftmargin={\bibhang\widthof{\ \ \ }}}
+\setlist*[bibsection,bibenum]{%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+
+
+\begin{document}
+
+\name{Andrew S. Voyles, EIT \vspace*{.1in}}
+
+
+
+\address{andrew.voyles@berkeley.edu $\diamond$  (850) 281--0217}
+
+\address{Department of Nuclear Engineering $\diamond$ The University of California, Berkeley}
+
+\addressthird{3115B  Etcheverry Hall, MC 1730 $\diamond$ Berkeley, CA 94720 USA}
+	 
+
+% \vskip 2pt
+%   \fullline
+%   \vskip 2pt
+
+% \address{text2}
+
+% \begin{format}
+% 		\title{l}\employer{r}\\
+% 		\dates{r}\\
+% 		\body\\
+% 		\location{l}\\
+% 		\end{format}
+
+% \employer{text3}
+% \title{text4}
+% \dates{text5}
+% \location{text6}
+
+\begin{resume}
+% \hrule
+% \hrulefill
+% \fullline
+% \noindent\rule{\resumewidth}{1pt}
+% \leavevmode\hbox to \textwidth{\hfil\@tablebox{\namefont\@name}\hfil}\par
+
+% \section{\sc Contact Information}
+% \begin{tabular}{@{}p{2.5in}p{3in}}
+% 1106B Etcheverry Hall            & {\it Voice:}  (850) 281-0217 \\            
+% The University of California, Berkeley   & {\it Fax:}    (925) 281-0219 \\         
+% Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\       
+% 
+% \end{tabular}
+
+
+
+%\section{\sc Research Interests}
+%Bayesian statistics, spatial statistics, nonparametric regression,
+%statistical methods for large datasets, statistics for public policy
+
+
+
+\section{\sc Education}
+{\bf University of California, Berkeley}  \hfill{ Berkeley, California}
+
+%{\em Department of Statistics} 
+\begin{list1}
+\item[] Ph.D. Candidate, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
+\item[] Nuclear Regulatory Commission Graduate Fellowship 
+\begin{list2}
+\vspace*{.05in}
+% \item Dissertation Topic:  \enquote{Nonstationary Covariance Models for
+%   Spatial Data and Regression Problems} 
+% \item 3.725/4.0 Cumulative GPA
+%\item Research Emphasis:  \enquote{Evaluation of Solid Debris Collection Diagnostics in the Search 
+%for Evidence of Nuclear-Plasma Interactions} 
+% \item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
+\item Dissertation
+% Topic
+: \enquote{Nuclear Excitation Functions for Production of Novel Medical Radionuclides}
+%\item Dissertation Topic:  \enquote{Hierarchical Models for Multiple Ratings
+%  in Performance-Based\\ \hspace*{1.23in} Student Assessments.} 
+\item Research Advisor:  Lee A. Bernstein
+\end{list2}
+\end{list1}
+
+
+
+{\bf University of Utah, Honors College}  \hfill{ Salt Lake City, Utah}
+
+%{\em Department of Mathematics and Statistics} 
+\begin{list1}
+\item[] B.S., \textit{cum laude}, Chemical Engineering  \hfill{\bf May, 2013}
+\item[] Minors: Nuclear Engineering, Chemistry
+%\item[] University of Utah President's Club Scholarship (Full Ride), Dean's List, 2009 - 2013
+\item[] University of Utah President's Club Scholarship, Dean's List, 2009 - 2013
+% \begin{list2}
+% \vspace*{.05in}
+% % \item 3.877/4.0 Cumulative GPA
+% % \item Notable Coursework Emphases: Hands-on radiochemistry labs, coursework  exposure to advanced Nuclear Engineering simulation codes (GEANT4, MCNP5/MCNPX, AGENT).
+% \end{list2}
+\end{list1}
+
+
+
+
+
+\section{\sc Research Experience}
+
+\input{research-experience}
+
+
+% \pagebreak
+
+\section{\sc Teaching Experience}
+
+\input{teaching-experience}
+
+
+\section{\sc Professional Experience}
+
+\input{professional-experience}
+
+
+
+
+
+\section{\sc Professional Service} 
+
+\input{professional-service}
+
+
+
+
+\section{\sc Selected Publications}
+% A.S. Voyles, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber. \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B 410 (2017) 230 - 239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
+\input{publications}
+
+
+
+
+
+\section{\sc Contributed Talks}
+\input{presentations}
+
+
+
+
+
+\section{\sc Certifications} 
+
+\input{certifications}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Computer and Lab Skills
+%----------------------------------------------------------------------------------------
+\input{practical-skills}
+
+
+
+\section{\sc Professional Society Memberships} 
+\input{memberships}
+
+
+
+\section{\sc Honors and Awards} 
+\input{honors-and-awards}
+
+
+
+
+
+
+\end{resume}
+\end{document}
+
+
+
+
