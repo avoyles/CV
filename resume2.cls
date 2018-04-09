@@ -111,13 +111,15 @@
 %----------------------------------------------------------------------------------------
 
 \newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
- {\bf #1} \hfill {#2} % Bold company name and date on the right
+ {\bf #1} \hfill {#4} % Bold company name and date on the right
  \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
   \\
-  {\em #3} \hfill {\em #4} % Italic job title and location
-  }\smallskip
-  \begin{list}{$\bullet$}{\leftmargin=2em} % \cdot used for bullets, no indentation
-   \itemsep -0.5em \vspace{-0.5em} % Compress items in list together for aesthetics
+  {\em #3} \hfill {\bf #2} % Italic job title and location
+  }\newline\vspace{-1.5\baselineskip}\smallskip
+  \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
+   \setlength{\itemsep}{0in}
+   \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+%    \itemsep %-0.5em %\vspace{-0.5em} % Compress items in list together for aesthetics
   }{
   \end{list}
   \vspace{0.5em} % Some space after the list of bullet points
