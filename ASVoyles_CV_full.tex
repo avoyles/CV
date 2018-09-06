@@ -8,7 +8,8 @@
 \usepackage[shortlabels]{enumitem}
 \usepackage{ifthen} % Required for ifthenelse statements
 
-
+% Set up logicals for including PDF links in online CV
+\newif\ifshort
 
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -87,6 +88,9 @@
 
 
 \begin{document}
+
+% Show PDF links in publication section - hidden in full CV
+\shortfalse 
 
 \name{Andrew S. Voyles, Ph.D., EIT \vspace*{.1in}}
 

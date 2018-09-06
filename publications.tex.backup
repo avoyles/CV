@@ -1,7 +1,28 @@
 \begin{bibsection}
 %\item J.\ S.\ Rehak, L.\ M.\ Kerby, M.\ D.\ DeHart, R.\ N.\ Slaybaugh. ``Weighted Delta-Tracking with Scattering," \textit{Annals of Nuclear Energy.} (Submitted 2017)
+\item \textbf{Andrew S. Voyles}, Lee A. Bernstein, Eva R. Birnbaum, Jonathan W. Engle, Stephen A. Graves, Toshihiko Kawano, Amanda M. Lewis, and Francois M. Nortier, \emph{Excitation functions for (p,x) reactions of niobium in the energy range of  E$_{\text{p}}$\,=\,40--90 MeV.} Nuclear Instruments and Methods in Physics Research  B, 
+\textbf{429} (2018) 53--74. \url{http://dx.doi.org/10.1016/j.nimb.2018.05.028} 
 
-\item A.S. Voyles, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber. \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B \textbf{410} (2017) 230--239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
+
+  
+% \begin{sloppypar}
+\ifshort \vspace{0.1cm} \href{https://avoyles.github.io/papers/Voyles2018_Nb_px.pdf}{\underline{PDF}} \else  \fi 
+% \end{sloppypar}
+    
+    
+
+\item Mauricio Ayllon, Parker A. Adams, Joseph D. Bauer, Jon C. Batchelder, Tim A. Becker, Lee A. Bernstein, Su-Ann Chong, Jay James, Leo E. Kirsch, Ka-Ngo Leung, Eric F. Matthews, Jonathan T. Morrell, Paul R. Renne, Andrew M. Rogers, Daniel Rutte, \textbf{Andrew S. Voyles}, Karl Van Bibber, and Cory S. Waltz, \emph{Design, construction, and characterization of a compact DD neutron generator designed for \ce{^{40}Ar}/\ce{^{39}Ar} geochronology.} Nuclear Instruments and Methods in Physics Research  A, 
+\textbf{903} (2018) 193--203. \url{http://dx.doi.org/10.1016/j.nima.2018.04.020} 
+% Update following acceptance
+% (In Press, Accepted 2018). \url{http://dx.doi.org/10.1016/j.nima.2018.04.020}
+
+\ifshort \vspace{0.1cm} \href{https://avoyles.github.io/papers/Ayllon2018_geochronology.pdf}{\underline{PDF}} \else  \fi 
+
+
+\item \textbf{A.S. Voyles}, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber, \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B, \textbf{410} (2017) 230--239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
+
+\ifshort \vspace{0.1cm} \href{https://avoyles.github.io/papers/Voyles2017_HFNG.pdf}{\underline{PDF}} \else  \fi 
+
 
 %-------------------------------------------
 % \item \textbf{Refereed Conference Proceedings}
