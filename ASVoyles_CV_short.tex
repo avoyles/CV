@@ -11,12 +11,21 @@
 % Set up logicals for including PDF links in online CV
 \newif\ifshort
 
+% Set up logicals for full/short CV in research/teaching experience
+\newif\iffull
+
+% Set up logicals for including day in dates
+\newif\ifday
+
+
 \clubpenalty = 10000
 \widowpenalty = 10000
 
 \setlength\parskip{1.5ex}
 
+% Set margins
 \topmargin=-0.5in
+\textheight=9.7in
 \oddsidemargin -.5in
 \evensidemargin -.5in
 \textwidth=6.0in
@@ -31,15 +40,15 @@
 \usepackage{datetime2}
 
 \DTMnewdatestyle{mydate}{%
-  \renewcommand*{\DTMdisplaydate}[3]{\DTMtwodigits{##3} \DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}, ##1}%
   \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
 }
-\DTMnewdatestyle{NoDayMyDate}{%
-  \renewcommand*{\DTMdisplaydate}[3]{\DTMenglishmonthname{##2}, ##1}%
-  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
-}
+% \DTMnewdatestyle{NoDayMyDate}{%
+%   \renewcommand*{\DTMdisplaydate}[3]{\DTMenglishmonthname{##2}, ##1}%
+%   \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+% }
 \DTMnewdatestyle{myDateRange}{%
-  \renewcommand*{\DTMdisplaydate}[3]{\DTMtwodigits{##3} \DTMenglishmonthname{##2}}%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}}%
   \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
 }
 
@@ -108,6 +117,13 @@
 
 % Show PDF links in publication section - hidden in full CV
 \shortfalse 
+
+% Hide select research/teaching experience items - shown in full CV
+\fullfalse 
+
+% Show day in dates
+\daytrue 
+\dayfalse 
 
 % Use custom date style
 \DTMsetdatestyle{mydate}
@@ -213,7 +229,8 @@
 %	Research Experience
 %----------------------------------------------------------------------------------------
 \section{\sc Research Experience}
-\input{short-research-experience}
+\input{research-experience}
+% \input{short-research-experience}
 
 
 
@@ -222,7 +239,8 @@
 %	Teaching Experience
 %----------------------------------------------------------------------------------------
 \section{\sc Teaching Experience}
-\input{short-teaching-experience}
+\input{teaching-experience}
+% \input{short-teaching-experience}
 
 
 
