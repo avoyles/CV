@@ -26,6 +26,23 @@
 %\setlength{\pdfpagewidth}{\paperwidth}
 %\setlength{\pdfpageheight}{\paperheight} 
 
+% Custom datetime2 formats
+\usepackage[USenglish]{babel}
+\usepackage{datetime2}
+
+\DTMnewdatestyle{mydate}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\DTMtwodigits{##3} \DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMnewdatestyle{NoDayMyDate}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMnewdatestyle{myDateRange}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\DTMtwodigits{##3} \DTMenglishmonthname{##2}}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+
 \newenvironment{list1}{
   \begin{list}{\ding{113}}{%
       \setlength{\itemsep}{0in}
@@ -92,6 +109,10 @@
 % Show PDF links in publication section - hidden in full CV
 \shortfalse 
 
+% Use custom date style
+\DTMsetdatestyle{mydate}
+% \DTMsetdatestyle{NoDayMyDate}
+
 \name{Andrew S. Voyles, Ph.D., EIT \vspace*{.1in}}
 
 
@@ -149,7 +170,7 @@
 
 %{\em Department of Statistics} 
 \begin{list1}
-\item[] Ph.D., Nuclear Engineering \hfill {  \textbf{August, 2018}}
+\item[] Ph.D., Nuclear Engineering \hfill {  \textbf{\DTMdisplaydate{2018}{8}{10}}}
 \item[] Nuclear Regulatory Commission Graduate Fellowship 
 % \begin{list2}
 % \vspace*{.05in}
@@ -172,7 +193,7 @@
 
 %{\em Department of Mathematics and Statistics} 
 \begin{list1}
-\item[] B.S., \textit{cum laude}, Chemical Engineering  \hfill{\bf May, 2013}
+\item[] B.S., \textit{cum laude}, Chemical Engineering  \hfill{\textbf{\DTMdisplaydate{2013}{5}{2}}}
 \item[] Minors: Nuclear Engineering, Chemistry
 %\item[] University of Utah President's Club Scholarship (Full Ride), Dean's List, 2009 - 2013
 \item[] University of Utah President's Club Scholarship, Dean's List, 2009 - 2013

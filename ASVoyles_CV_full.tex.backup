@@ -6,8 +6,10 @@
 \usepackage[super]{nth}
 \usepackage[hidelinks]{hyperref}
 \usepackage[shortlabels]{enumitem}
+\usepackage{ifthen} % Required for ifthenelse statements
 
-
+% Set up logicals for including PDF links in online CV
+\newif\ifshort
 
 \clubpenalty = 10000
 \widowpenalty = 10000
@@ -24,12 +26,26 @@
 %\setlength{\pdfpagewidth}{\paperwidth}
 %\setlength{\pdfpageheight}{\paperheight} 
 
+% Custom datetime2 formats
+\usepackage[USenglish]{babel}
+\usepackage{datetime2}
+
+\DTMnewdatestyle{mydate}{%
+  \renewcommand*{\DTMdisplaydate}[4]{\DTMtwodigits{##3} \DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+\DTMnewdatestyle{NoDayMyDate}{%
+  \renewcommand*{\DTMdisplaydate}[4]{\DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+
+
 \newenvironment{list1}{
   \begin{list}{\ding{113}}{%
       \setlength{\itemsep}{0in}
       \setlength{\parsep}{0in} \setlength{\parskip}{0in}
       \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
-      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+      \setlength{\leftmargin}{0.1in}}}{\end{list}}
 \newenvironment{list2}{
   \begin{list}{$\bullet$}{%
       \setlength{\itemsep}{0in}
@@ -49,7 +65,20 @@
 }{
   \end{list}
 }      
-
+\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
+ {\bf #1} \hfill { #4} % Bold company name and date on the right
+ \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
+  \\
+  {\em #3} \hfill {\bf #2} % Italic job title and location
+  }\newline\vspace{-\baselineskip}\smallskip
+  \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
+   \setlength{\itemsep}{0in}
+   \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+%    \itemsep %-0.5em %\vspace{-0.5em} % Compress items in list together for aesthetics
+  }{
+  \end{list}
+  \vspace{0.5em} % Some space after the list of bullet points
+}
 
 \makeatletter
 \newlength{\bibhang}
@@ -74,11 +103,18 @@
 
 \begin{document}
 
-\name{Andrew S. Voyles, EIT \vspace*{.1in}}
+% Show PDF links in publication section - hidden in full CV
+\shortfalse 
+
+% Use custom date style
+% \DTMsetdatestyle{mydate}
+\DTMsetdatestyle{NoDayMyDate}
+
+\name{Andrew S. Voyles, Ph.D., EIT \vspace*{.1in}}
 
 
 
-\address{andrew.voyles@berkeley.edu $\diamond$  (850) 281--0217}
+\address{andrew.voyles@berkeley.edu $\diamond$  (510) 486--7310}
 
 \address{Department of Nuclear Engineering $\diamond$ The University of California, Berkeley}
 
@@ -131,23 +167,21 @@
 
 %{\em Department of Statistics} 
 \begin{list1}
-\item[] Ph.D. Candidate, Nuclear Engineering \hfill { Expected Graduation: \textbf{May, 2018}}
+\item[] Ph.D., Nuclear Engineering \hfill {  \textbf{\DTMdisplaydate{2018}{8}{10}}}
 \item[] Nuclear Regulatory Commission Graduate Fellowship 
-\begin{list2}
-\vspace*{.05in}
+% \begin{list2}
+% \vspace*{.05in}
 % \item Dissertation Topic:  \enquote{Nonstationary Covariance Models for
 %   Spatial Data and Regression Problems} 
 % \item 3.725/4.0 Cumulative GPA
 %\item Research Emphasis:  \enquote{Evaluation of Solid Debris Collection Diagnostics in the Search 
 %for Evidence of Nuclear-Plasma Interactions} 
 % \item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
-\item Dissertation
-% Topic
-: \enquote{Nuclear Excitation Functions for Production of Novel Medical Radionuclides}
+% \item Dissertation: \enquote{Nuclear Excitation Functions for the Production of Novel Medical Radionuclides}
 %\item Dissertation Topic:  \enquote{Hierarchical Models for Multiple Ratings
 %  in Performance-Based\\ \hspace*{1.23in} Student Assessments.} 
-\item Research Advisor:  Lee A. Bernstein
-\end{list2}
+% \item Dissertation Advisor:  Lee A. Bernstein
+% \end{list2}
 \end{list1}
 
 
@@ -170,34 +204,47 @@
 
 
 
-
+%----------------------------------------------------------------------------------------
+%	Research Experience
+%----------------------------------------------------------------------------------------
 \section{\sc Research Experience}
-
 \input{research-experience}
 
 
+
 % \pagebreak
-
+%----------------------------------------------------------------------------------------
+%	Teaching Experience
+%----------------------------------------------------------------------------------------
 \section{\sc Teaching Experience}
-
 \input{teaching-experience}
 
 
-\section{\sc Professional Experience}
 
-\input{professional-experience}
-
-
-
-
-
-\section{\sc Professional Service} 
-
-\input{professional-service}
+%----------------------------------------------------------------------------------------
+%	Teaching Experience
+%----------------------------------------------------------------------------------------
+% \section{\sc Graduate and Postdoctoral (Co-)Advisees:}
+\section{\sc Graduate Supervision:}
+\input{advising-experience}
 
 
 
 
+%----------------------------------------------------------------------------------------
+%	Professional Experience
+%----------------------------------------------------------------------------------------
+% \section{\sc Professional Experience}
+% \input{professional-experience}
+
+
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Selected Publications
+%----------------------------------------------------------------------------------------
 \section{\sc Selected Publications}
 % A.S. Voyles, M.S. Basunia, J.C. Batchelder, J.D. Bauer, T.A. Becker, L.A. Bernstein, E.F. Matthews, P.R. Renne, D. Rutte, M.A. Unzueta, and K.A. van Bibber. \emph{Measurement of the \ce{^{64}Zn},\ce{^{47}Ti}(n,p) Cross Sections using a DD Neutron Generator for Medical Isotope Studies}. Nuclear Instruments and Methods in Physics Research  B 410 (2017) 230 - 239. \url{http://dx.doi.org/10.1016/j.nimb.2017.08.021}
 \input{publications}
@@ -205,86 +252,51 @@
 
 
 
-
+%----------------------------------------------------------------------------------------
+%	Contributed Talks
+%----------------------------------------------------------------------------------------
 \section{\sc Contributed Talks}
 \input{presentations}
 
 
 
 
-
+%----------------------------------------------------------------------------------------
+%	Certifications
+%----------------------------------------------------------------------------------------
 \section{\sc Certifications} 
-
 \input{certifications}
 
 
 
-\section{\sc Computer Skills} 
-% \begin{list2}
-% \item \textbf{Languages:}   Java, C/C++, Python use of Unix shell scripts.
-% % \item Mathematics Packages:   MATLAB, Mathematica and Maple.
-% \item \textbf{Languages:}   MATLAB, Mathematica and Maple.
-% \item Applications: \LaTeX, Arduino.
-% \item Simulation Packages: GEANT4, MCNP/MCNPX radiation simulation codes, \\COMSOL Multiphysics, Aspen process simulator, ANSYS Fluent.
-% \item Operating Systems:  Unix/Linux, Windows, and basic network/system administration.
-% \end{list2}
-
-\begin{tabular}{ @{\bfseries} l @{\hspace{6ex}} l }
-Languages & Java, C/C++, Python \\
-% Versioning and Testing & git, svn, cvs, CTest, GoogleTest, nose \\
-Tools & git, MATLAB, Mathematica, Maple, \LaTeX, Arduino, shell,  bash, \\&SQLite, COMSOL Multiphysics, Aspen, ANSYS Fluent\\
-Nuclear Software & EXFOR, GEANT4, MCNP/MCNPX radiation simulation codes
-\end{tabular}
+%----------------------------------------------------------------------------------------
+%	Computer and Lab Skills
+%----------------------------------------------------------------------------------------
+\input{practical-skills}
 
 
-\section{\sc Lab Skills} 
-\begin{list2}
-\item Radionuclide labeling via chelate-conjugated biomolecules.
-\item Radio-HPLC, radio-TLC, and solid-phase extraction radiochemical purification.
-\item HPGe Gamma spectroscopy, radiation detection and measurement.
-\item Design and implementation of PID process control systems.
-\item Operation of heat exchanger, distillation column, ebulliometer (classroom experience).
-%\item Radiochemistry laboratory techniques, radiation detection and measurement.
-\item \ce{^{1}H} and \ce{^{13}C} NMR , IR characterization and analysis, chromatography.
-\item Organic laboratory synthesis and purification techniques.
-\end{list2}
+
+%----------------------------------------------------------------------------------------
+%	Professional Service
+%----------------------------------------------------------------------------------------
+\section{\sc Professional Service} 
+\input{professional-service}
 
 
 
 
+%----------------------------------------------------------------------------------------
+%	Professional Society Memberships
+%----------------------------------------------------------------------------------------
 \section{\sc Professional Society Memberships} 
-\begin{list1}
-\item[] American Physical Society  \hfill{ - since 2016}
-\item[] American Nuclear Society  \hfill{ - since 2011}
-\item[] Alpha Nu Sigma Nuclear Engineering Honor Society \hfill{- since 2011}
-\item[] Tau Beta Pi National Engineering Honor Society \hfill{- since 2010}
-\item[] Phi Eta Sigma National Honor Society \hfill{- since 2010}
-\item[] American Institute of Chemical Engineers \hfill{- since 2009}
-\end{list1}
+\input{memberships}
 
+
+%----------------------------------------------------------------------------------------
+%	Honors and Awards
+%----------------------------------------------------------------------------------------
 \section{\sc Honors and Awards} 
-
-\begin{list1}
-\item[] \textit{University of California, Berkeley}
-\begin{list2}
-\item Department of Nuclear Engineering Outstanding Service Award \hfill{2016}
-\item Nuclear Regulatory Commission Graduate Fellowship \hfill{- since 2015}
-\end{list2}
-\item[] \textit{University of Utah}
-\begin{list2}
-\item  Undergraduate Research Scholar Award \hfill{May, 2013}
-\item University of Utah President's Club (Full Ride) Scholarship \hfill{2009 - 2013}
-\item Dean's List \hfill{2009 - 2013}
-\item Neil R. Mitchell Scholarship in Engineering \hfill{2012}
-\item Chevron Scholarship in Engineering \hfill{2011}
-\item Theodore Verender Hanks Scholarship in Science \& Engineering \hfill{2011}
-\item Don Dahlstrom Scholarship in Chemical Engineering \hfill{2010}
-\item College of Science Dean's Scholarship, University of Utah \hfill{2010}
-\end{list2}
-\item[] International Baccalaureate Diploma Recipient  \hfill{July, 2009}
-\item[] Finalist: Intel International Science and Engineering Fair  \hfill{ May, 2009}
-\item[] 3\textsuperscript{rd} Place: Florida State Science Fair  \hfill{April, 2009}
-\end{list1}
+\input{honors-and-awards}
 
 
 
