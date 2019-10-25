@@ -28,6 +28,35 @@
 \usepackage[left=0.75in,top=0.6in,right=0.75in,bottom=0.6in]{geometry} % Document margins
 \usepackage{hyperref}
 
+\usepackage{ifthen} % Required for ifthenelse statements
+
+% % Set up logicals for including PDF links in online CV
+% \newif\ifshort
+
+% Set up logicals for full/short CV in research/teaching experience
+\newif\iffull
+
+% Set up logicals for including day in dates
+\newif\ifday
+
+
+
+\usepackage[USenglish]{babel}
+\usepackage{datetime2}
+
+\DTMnewdatestyle{mydate}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+% \DTMnewdatestyle{NoDayMyDate}{%
+%   \renewcommand*{\DTMdisplaydate}[3]{\DTMenglishmonthname{##2}, ##1}%
+%   \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+% }
+\DTMnewdatestyle{myDateRange}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+
 
 \newenvironment{list1}{
   \begin{list}{\ding{113}}{%
@@ -57,13 +86,26 @@
 \begin{document}
 %-----------------------------------------------
 
+
+% Hide select research/teaching experience items - shown in full CV
+\fulltrue
+
 \begin{center}
 {\Large Teaching Experience}
 
 {\large \textbf{Andrew S. Voyles}}
 
+\DTMsetdatestyle{en-US}
 \today
 \end{center} 
+
+% Show day in dates
+% \daytrue 
+% \dayfalse 
+
+% Use custom date style
+\DTMsetdatestyle{mydate}
+% \DTMsetdatestyle{NoDayMyDate}
 %----------------------------------------------------------------------------------------
 %	PUBLICATIONS
 %----------------------------------------------------------------------------------------
