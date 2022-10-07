@@ -1,0 +1,272 @@
+\documentclass[margin,centered]{res}
+% \documentclass[margin,line]{res}
+
+\usepackage[version=3]{mhchem} 
+\usepackage{csquotes}
+\usepackage[super]{nth}
+\usepackage[hidelinks]{hyperref}
+\usepackage[shortlabels]{enumitem}
+\usepackage{ifthen} % Required for ifthenelse statements
+
+% Set up logicals for including PDF links in online CV
+\newif\ifshort
+
+% Set up logicals for full/short CV in research/teaching experience
+\newif\iffull
+
+% Set up logicals for including day in dates
+\newif\ifday
+
+\newif\ifveryshort
+
+
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+\setlength\parskip{1.5ex}
+
+% Set margins
+\topmargin=-0.5in
+\textheight=9.7in
+\oddsidemargin -.5in
+\evensidemargin -.5in
+\textwidth=6.0in
+\itemsep=0in
+\parsep=0in
+% if using pdflatex:
+%\setlength{\pdfpagewidth}{\paperwidth}
+%\setlength{\pdfpageheight}{\paperheight} 
+
+% Custom datetime2 formats
+\usepackage[USenglish]{babel}
+\usepackage{datetime2}
+
+\DTMnewdatestyle{mydate}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}, ##1}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+% \DTMnewdatestyle{NoDayMyDate}{%
+%   \renewcommand*{\DTMdisplaydate}[3]{\DTMenglishmonthname{##2}, ##1}%
+%   \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+% }
+\DTMnewdatestyle{myDateRange}{%
+  \renewcommand*{\DTMdisplaydate}[3]{\ifday{\DTMtwodigits{##3} }\else \fi \DTMenglishmonthname{##2}}%
+  \renewcommand*{\DTMDisplaydate}{\DTMdisplaydate}%
+}
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in} 
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+      
+\newenvironment{rSection}[1]{ % 1 input argument - section name
+  \sectionskip
+  \MakeUppercase{\bf #1} % Section title
+  \sectionlineskip
+  \hrule % Horizontal line
+  \begin{list}{}{ % List for each individual item in the section
+    \setlength{\leftmargin}{1.5em} % Margin within the section
+  }
+  \item[]
+}{
+  \end{list}
+}      
+\newenvironment{rSubsection}[4]{ % 4 input arguments - company name, year(s) employed, job title and location
+ {\bf #1} \hfill { #4} % Bold company name and date on the right
+ \ifthenelse{\equal{#3}{}}{}{ % If the third argument is not specified, don't print the job title and location line
+  \\
+  {\em #3} \hfill {\bf #2} % Italic job title and location
+  }\newline\vspace{-\baselineskip}\smallskip
+  \begin{list}{$\bullet$}{\leftmargin=1.5em} % \cdot used for bullets, no indentation
+   \setlength{\itemsep}{0in}
+   \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+%    \itemsep %-0.5em %\vspace{-0.5em} % Compress items in list together for aesthetics
+  }{
+  \end{list}
+%   \vspace{0.5em} % Some space after the list of bullet points
+}
+
+\makeatletter
+\newlength{\bibhang}
+\setlength{\bibhang}{1em}
+\newlength{\bibsep}
+ {\@listi \global\bibsep\itemsep \global\advance\bibsep by\parsep}
+\newlist{bibsection}{itemize}{3}
+\setlist[bibsection]{label=,leftmargin=\bibhang}
+\newlist{bibenum}{enumerate}{3}
+\setlist[bibenum]{resume,label=[\arabic*],leftmargin={\bibhang\widthof{\ \ \ }}}
+\setlist*[bibsection,bibenum]{%
+        itemindent=-\bibhang,
+        itemsep=\bibsep,parsep=\z@,partopsep=0pt,
+        topsep=0pt}
+\let\oldendbibenum\endbibenum
+\def\endbibenum{\oldendbibenum\vspace{-.6\baselineskip}}
+\let\oldendbibsection\endbibsection
+\def\endbibsection{\oldendbibsection\vspace{-.6\baselineskip}}
+\makeatother
+
+
+
+\begin{document}
+
+% Show PDF links in publication section - hidden in full CV
+\shortfalse 
+
+% Hide select research/teaching experience items - shown in full CV
+\fullfalse 
+
+% Show day in dates
+\daytrue 
+\dayfalse 
+
+\veryshorttrue
+
+% Use custom date style
+\DTMsetdatestyle{mydate}
+% \DTMsetdatestyle{NoDayMyDate}
+
+\name{Andrew S. Voyles, Ph.D., EIT \vspace*{.1in}}
+
+
+
+\address{andrew.voyles@berkeley.edu $\diamond$  (510) 486--7310  $\diamond$ \url{https://avoyles.github.io}}
+
+\address{
+% Department of Nuclear Engineering $\diamond$ The University of California, Berkeley \\  
+Nuclear Science Division $\diamond$ Lawrence Berkeley National Laboratory }
+% \address{Lawrence Berkeley National Laboratory $\diamond$ Nuclear Science Division}
+
+% \addressthird{3115B  Etcheverry Hall, MC 1730 $\diamond$ Berkeley, CA 94720 USA}
+
+\addressthird{Building 088-163D  |  M/S 88R0192 $\diamond$ Berkeley, CA 94720 USA}
+	 
+
+% \vskip 2pt
+%   \fullline
+%   \vskip 2pt
+
+% \address{text2}
+
+% \begin{format}
+% 		\title{l}\employer{r}\\
+% 		\dates{r}\\
+% 		\body\\
+% 		\location{l}\\
+% 		\end{format}
+
+% \employer{text3}
+% \title{text4}
+% \dates{text5}
+% \location{text6}
+
+\begin{resume}
+% \hrule
+% \hrulefill
+% \fullline
+% \noindent\rule{\resumewidth}{1pt}
+% \leavevmode\hbox to \textwidth{\hfil\@tablebox{\namefont\@name}\hfil}\par
+
+% \section{\sc Contact Information}
+% \begin{tabular}{@{}p{2.5in}p{3in}}
+% 1106B Etcheverry Hall            & {\it Voice:}  (850) 281-0217 \\            
+% The University of California, Berkeley   & {\it Fax:}    (925) 281-0219 \\         
+% Berkeley, CA  94720 USA       & {\it E-mail:}  andrew.voyles@gmail.com\\       
+% 
+% \end{tabular}
+
+
+
+%\section{\sc Research Interests}
+%Bayesian statistics, spatial statistics, nonparametric regression,
+%statistical methods for large datasets, statistics for public policy
+
+
+
+\section{\sc Education}
+{\bf University of California, Berkeley}  \hfill{ Berkeley, California}
+
+%{\em Department of Statistics} 
+\begin{list1}
+\item[] Ph.D., Nuclear Engineering \hfill {  \textbf{\DTMdisplaydate{2018}{8}{10}}}
+\item[] Nuclear Regulatory Commission Graduate Fellowship 
+% \begin{list2}
+% \vspace*{.05in}
+% \item Dissertation Topic:  \enquote{Nonstationary Covariance Models for
+%   Spatial Data and Regression Problems} 
+% \item 3.725/4.0 Cumulative GPA
+%\item Research Emphasis:  \enquote{Evaluation of Solid Debris Collection Diagnostics in the Search 
+%for Evidence of Nuclear-Plasma Interactions} 
+% \item Research Emphasis: Nuclear Excitation Functions for Neutron and Charged Particle Production of Novel Therapeutic and Diagnostic Radionuclides.
+% \item Dissertation
+% Topic
+% : \enquote{Nuclear Excitation Functions for the Production of Novel Medical Radionuclides}
+%\item Dissertation Topic:  \enquote{Hierarchical Models for Multiple Ratings
+%  in Performance-Based\\ \hspace*{1.23in} Student Assessments.} 
+% \item Dissertation Advisor:  Lee A. Bernstein
+% \end{list2}
+\end{list1}
+
+
+
+{\bf University of Utah, Honors College}  \hfill{ Salt Lake City, Utah}
+
+%{\em Department of Mathematics and Statistics} 
+\begin{list1}
+\item[] B.S., \textit{cum laude}, Chemical Engineering  \hfill{\textbf{\DTMdisplaydate{2013}{5}{2}}}
+\item[] Minors: Nuclear Engineering, Chemistry
+%\item[] University of Utah President's Club Scholarship (Full Ride), Dean's List, 2009 - 2013
+\item[] University of Utah President's Club Scholarship, Dean's List, 2009 - 2013
+% \begin{list2}
+% \vspace*{.05in}
+% % \item 3.877/4.0 Cumulative GPA
+% % \item Notable Coursework Emphases: Hands-on radiochemistry labs, coursework  exposure to advanced Nuclear Engineering simulation codes (GEANT4, MCNP5/MCNPX, AGENT).
+% \end{list2}
+\end{list1}
+
+
+
+
+%----------------------------------------------------------------------------------------
+%	Research Experience
+%----------------------------------------------------------------------------------------
+\section{\sc Research Experience}
+\input{./include/research-experience}
+% \input{short-research-experience}
+
+
+
+% \pagebreak
+%----------------------------------------------------------------------------------------
+%	Teaching Experience
+%----------------------------------------------------------------------------------------
+\section{\sc Teaching Experience}
+\input{./include/teaching-experience}
+% \input{short-teaching-experience}
+
+
+
+%----------------------------------------------------------------------------------------
+%	Teaching Experience
+%----------------------------------------------------------------------------------------
+% \section{\sc Graduate and Postdoctoral (Co-)Advisees:}
+\section{\sc Graduate Supervision:}
+\input{./include/advising-experience}
+
+
+
+
+
+\end{resume}
+\end{document}
+
+
+
+
